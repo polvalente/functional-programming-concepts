@@ -49,8 +49,9 @@ const isEven = (x) => x % 2 === 0;
 ```typescript
 // Código em versão OOP
 
+let result = []; // Precisamos usar `let` para poder modificar `result` dentro da função!
 const getEven = (l) => {
-  let result = []; // Precisamos usar `let` para poder modificar `result` dentro da função!
+  result = [];
   // Isso não é indicado pois modifica estado, ainda por cima estado fora do escopo do bloco de loop.
   for (x of l) {
     if (isEven(x)) {
@@ -73,8 +74,8 @@ function getEven(l, result=[]){
     const head = l[0];
     const tail = l.slice(1);
 
-    if(isEven(x)){
-        return getEven(tail, result + [x]);
+    if(isEven(head)){
+        return getEven(tail, result + [head]);
     }
 
     return getEven(tail, result).
@@ -88,7 +89,7 @@ function getEven(l, result=[]){
 const getEven = (l) => l.filter(isEven);
 
 // Código em versão funcional 2b
-const reducer = (acc, x) => {
+const reducer = (acc: number[], x: number): number[] => {
         isEven(x) {
             // Essa forma é mais usual e mais eficiente em memória,
             // mas não é puramente funcional pois modifica a referência
@@ -217,12 +218,12 @@ Recebe uma lista, retorna um valor qualquer (até mesmo uma lista), calculado at
 
 ```typescript
 //  Implementação equivalente:
-const reduce = (collection, fn, accumulator_in=undefined) => {
-    let accumulator = accumulator_in || collection[0]
-    for (const x of collection) {
-        accumulator = fn(accumulator, x)
-    }
-    return accumulator.
+const reduce = (collection, fn, accumulator_in = undefined) => {
+  let accumulator = accumulator_in || collection[0];
+  for (const x of collection) {
+    accumulator = fn(accumulator, x);
+  }
+  return accumulator;
 };
 ```
 

@@ -17,7 +17,7 @@
 console.log("result: ", inc(1));
 console.log("result: ", inc(1));
 console.log("result: ", inc(1));
-// console.log(globalIncCount);
+console.log(globalIncCount);
 
 // Functional
 function incFunctional(x, count = 0) {

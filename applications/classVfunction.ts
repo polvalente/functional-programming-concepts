@@ -2,7 +2,7 @@
   Functional Programming use-cases in TypeScript
 */
 
-// Case 1: Object "Components" vs Function "Components"
+// Case 1: Class "Components" vs Function "Components"
 
 class MyClassComponent {
   name: { value: string };
